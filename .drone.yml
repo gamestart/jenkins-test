@@ -75,3 +75,6 @@ steps:
 trigger:
   branch:
     - main
+
+image_pull_secrets:
+  - dockersecret
