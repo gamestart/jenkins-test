@@ -48,9 +48,9 @@ steps:
         from_secret: GITHUB_TOKEN
     commands:
       - echo "https://$(echo $GITHUB_TOKEN)@github.com" > /root/.git-credentials
-      - git config --global credential.helper store
       - git config --global user.email xiaoxuan.tan@smartmore.com
       - git config --global user.name gamestart
+      - git config --global credential.helper store
       - git submodule update --init --recursive --depth=1
     when:
       event:
