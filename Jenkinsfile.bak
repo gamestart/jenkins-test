@@ -1,0 +1,72 @@
+#!/usr/bin/env groovy
+
+def git_address = 'https://github.com/smartmore/vimo-segmentation-sdk.git'
+def git_auth = '31269f0f-fa08-43d1-95df-7d7864df19b2'
+def Branch = 'master'
+
+pipeline {
+    agent none
+    stages {
+        stage('Parallel Stage') {
+            failFast true
+            parallel {
+                    stage('linux_cpu_build') {
+                       agent {
+                        docker {
+                           image '192.168.100.12:5000/library/sdk-base:v0.1'
+                           args '-c 6'
+                            }
+                        }
+                        stages{
+                                stage('build'){
+                                         steps {
+                                            sh """
+                                                mv /onnx third_party/onnxruntime 
+                                                mv /smwrapper third_party/smwrapper &
+                                                mv /opencv third_party/opencv &
+                                                wait
+                                                ./scripts/package.sh
+                                                tar -zcf "linux_cpu.tar.gz" "sdk"
+
+                                            """
+                                         }
+                                }
+                        }
+                     }
+                    stage('win10_gpu') {
+                        agent {
+                        label 'win10'
+                          }
+                        stages{
+				stage('build'){
+                         	   	steps {
+                         	   	    powershell '''
+                         	   	        Copy-Item 'C:/onnxruntime_gpu' './third_party/onnxruntime' -Recurse
+                         	   	        Copy-Item 'C:/opencv' './third_party/opencv' -Recurse
+                         	   	        Copy-Item 'C:/TensorRT' './third_party/TensorRT' -Recurse
+                         	   	        ./scripts/package.ps1
+                         	   	        New-Item ./sdk/tutorial/build -ItemType Directory -ea 0
+                         	   	        Set-Location ./sdk/tutorial/build
+                         	   	        cmake -G "Visual Studio 16 2019" ..
+                         	   	        cmake --build . --config Release
+                         	   	        Set-Location ../../..
+                         	   	        Compress-Archive -LiteralPath ./sdk -DestinationPath segmentation_windows_gpu_${TAG_NAME}.zip
+                         	   	        
+                         	   	    '''
+                         		  }	
+                            	}    
+                        }
+
+                    }
+                }
+        }
+    }
+    post {
+      always {
+        node('win10') {
+          step([$class: 'WsCleanup'])
+        }
+      }
+    }
+
+}

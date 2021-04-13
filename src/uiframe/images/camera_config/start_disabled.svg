@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>开启</title>
+    <g id="SMore-ViMo-_运行平台_UI-1.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.400000006">
+        <g id="设置_相机设置01" transform="translate(-473.000000, -253.000000)">
+            <g id="编组-20" transform="translate(133.000000, 64.000000)">
+                <g id="编组-26" transform="translate(160.000000, 50.000000)">
+                    <g id="矩形-+-编组-蒙版" transform="translate(160.000000, 134.000000)">
+                        <g id="编组">
+                            <g id="暂停" transform="translate(20.000000, 5.000000)">
+                                <rect id="矩形备份-5" fill="#D8D8D8" opacity="0" x="0" y="0" width="20" height="20" rx="1.66666667"></rect>
+                                <rect id="矩形" fill="#000000" fill-rule="nonzero" opacity="0" x="3.33333333" y="3.33333333" width="13.3333333" height="13.3333333"></rect>
+                                <path d="M6.05305644,2.80990565 L16.6414296,9.5181832 C17.1195235,9.82119417 17.1195235,10.5936094 16.6414296,10.8948689 L6.05305644,17.6031464 C5.58277456,17.9009029 5,17.5208255 5,16.9148036 L5,3.5 C5,2.89397806 5.58277456,2.51214921 6.05305644,2.80990565 Z" id="路径" fill="#FFFFFF"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

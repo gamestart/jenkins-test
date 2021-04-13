@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>右-不可点击</title>
+    <g id="SMore-ViMo-_运行平台_0122" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="四视图02" transform="translate(-482.000000, -114.000000)" fill="#FFFFFF">
+            <g id="背景备份-2" transform="translate(2.000000, 32.000000)">
+                <g id="编组-15" transform="translate(0.000000, 32.000000)">
+                    <g id="编组-2备份-2" transform="translate(0.000000, 40.000000)">
+                        <g id="编组" transform="translate(408.000000, 0.000000)">
+                            <g id="右-不可点击" transform="translate(72.000000, 10.000000)">
+                                <rect id="矩形" fill-opacity="0.1" x="0" y="0" width="20" height="20" rx="2"></rect>
+                                <g id="按钮-展开" transform="translate(11.000000, 10.000000) rotate(-90.000000) translate(-11.000000, -10.000000) translate(4.000000, 6.000000)" opacity="0.300000012">
+                                    <g transform="translate(7.000000, 4.000000) rotate(-270.000000) translate(-7.000000, -4.000000) translate(3.000000, -3.000000)" id="矩形">
+                                        <path d="M1.03648231,0.836482309 L6.85351768,6.65351768 C7.04487458,6.84487458 7.04487458,7.15512542 6.85351768,7.34648232 L1.03648231,13.1635177 C0.845125409,13.3548746 0.534874574,13.3548746 0.343517675,13.1635177 C0.251624851,13.0716249 0.2,12.9469915 0.2,12.8170354 L0.2,1.18296463 C0.2,0.912345103 0.419380469,0.692964634 0.689999992,0.692964634 C0.819956069,0.692964634 0.944589485,0.744589485 1.03648231,0.836482309 Z"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

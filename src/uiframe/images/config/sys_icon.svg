@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>系统设置</title>
+    <g id="系统设置" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="20" height="20" rx="2"></rect>
+            <g id="扫描" transform="translate(1.000000, 2.000000)" stroke="#000000" stroke-opacity="0.5" stroke-width="1.5">
+                <path d="M4.88213933,0.800616984 L0.797260572,8 L4.91085905,15.25 L13.089141,15.25 L17.2027394,8 L12.9913726,0.577688429 C12.9667141,0.534229161 12.4846652,0.805623148 11.9861495,0.794045043 C10.7950715,0.766382066 8.7151324,0.751085951 4.88213933,0.800616984 Z" id="形状" fill-rule="nonzero"></path>
+                <circle id="椭圆形" cx="9" cy="8" r="3"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,64 @@
+
+pipeline{
+    agent {
+       label 'win10'
+    }
+    stages {
+       stage("GetPackage"){  
+            steps{    
+                script{  
+                   powershell '''
+                      $package_name="package-win"
+                      $wc=New-Object net.webclient
+                      $url='http://192.168.100.12/artifactory/smore_vimo-runtime-lib/package-win.zip'
+                      $package_destination_path = "$pwd/$package_name.zip"
+                      $wc.Downloadfile( $url, $package_destination_path)
+                      Expand-Archive -Path "$package_name.zip"
+                      Remove-Item  "$pwd/lib"  -Recurse
+                      Remove-Item  "$pwd/include"  -Recurse
+                      Copy-Item "$pwd/$package_name/*"  -Destination "$pwd" -Recurse
+                      Remove-Item  "$pwd/$package_name*"  -Recurse
+                   '''
+                }
+            }
+        }
+
+        stage('Build') {
+            steps{
+               script{
+                  powershell '''
+                  cd src
+                  ./win_build.bat
+                  '''
+               }
+            }
+        }
+        
+        stage('Deploy') {
+            when {
+              tag 'v*'
+            }
+            
+            steps {
+               powershell '''
+                 cd  build-smore_vimo-Desktop_Qt_5_14_1_MSVC2017_64bit-Release/release/bin
+                 del smore_vtk.exp 
+                 del smore_vtk.lib 
+                 del install_release.bat
+                 Compress-Archive -Path * -DestinationPath SMoreVTK.zip
+              '''
+              rtUpload (
+                        serverId: "jfrog", 
+                        spec: """{
+                                  "files": [
+                                   {
+                                       "pattern": "*zip",
+                                        "target": "vtk-runtime-release/${TAG_NAME}/"
+                                    }
+                                  ]
+                         }"""
+                      )
+             }
+         }
+    }
+}
