@@ -1,0 +1,35 @@
+kind: pipeline
+type: exec
+name: windows-cpu
+
+platform:
+  os: windows
+  arch: amd64
+
+clone:
+  depth: 1
+
+steps:
+  - name: build
+    commands:
+      - "$env:Path += ';C:/Program Files/CMake/bin'"
+      - Copy-Item 'C:/onnxruntime' './third_party/onnxruntime' -Recurse
+      - Copy-Item 'C:/opencv' './third_party/opencv' -Recurse
+      - Copy-Item 'C:/TensorRT' './third_party/TensorRT' -Recurse
+      - New-Item .\sdk\tutorial\build -ItemType Directory -ea 0
+      - Set-Location .\sdk\tutorial\build
+    when:
+      event:
+        - push
+        - pull_request
+        - tag
+  - name: upload
+    commands:
+      - "$env:DEVICE = 'cpu'"
+    when:
+      event:
+        - tag
+trigger:
+  branch:
+    main
+
