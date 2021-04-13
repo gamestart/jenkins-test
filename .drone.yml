@@ -33,6 +33,8 @@ trigger:
   branch:
     main
 
+---
+
 kind: pipeline
 type: docker
 name: linux
@@ -50,12 +52,8 @@ steps:
         - tag
       branch:
         - main
-        - release/v*.*.*
-        - hotfix/v*.*.*
       ref:
-        - refs/tags/v*.*.*-beta
         - refs/tags/v*.*.*-release
-        - refs/tags/v*.*.*-rcbeta
 
   - name: docker-cpu
     image: plugins/docker
@@ -68,14 +66,10 @@ steps:
       event:
         - push
       branch:
-        - master
-        - release/v*.*.*
-        - hotfix/v*.*.*
+        - main
       refs:
         include:
-          - refs/tags/v*.*.*-beta
           - refs/tags/v*.*.*-release
-          - refs/tags/v*.*.*-rcbeta
 
 trigger:
   branch:
