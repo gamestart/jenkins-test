@@ -33,3 +33,50 @@ trigger:
   branch:
     main
 
+kind: pipeline
+type: docker
+name: linux
+
+steps:
+  - name: build-tag
+    image: 192.168.100.12:5000/library/golang:1.0.5-vimo
+    environment:
+      DRONE: "true"
+    commands:
+      - echo $DRONE_TAG > .tags
+      - cat .tags
+    when:
+      event:
+        - tag
+      branch:
+        - main
+        - release/v*.*.*
+        - hotfix/v*.*.*
+      ref:
+        - refs/tags/v*.*.*-beta
+        - refs/tags/v*.*.*-release
+        - refs/tags/v*.*.*-rcbeta
+
+  - name: docker-cpu
+    image: plugins/docker
+    settings:
+      registry: 192.168.100.21:5000,192.168.100.12:5000
+      repo: 192.168.100.21:5000/sminsight/detection-service
+      dockerfile: ./Dockerfile
+      insecure: true
+    when:
+      event:
+        - push
+      branch:
+        - master
+        - release/v*.*.*
+        - hotfix/v*.*.*
+      refs:
+        include:
+          - refs/tags/v*.*.*-beta
+          - refs/tags/v*.*.*-release
+          - refs/tags/v*.*.*-rcbeta
+
+trigger:
+  branch:
+    - main
