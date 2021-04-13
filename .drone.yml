@@ -45,10 +45,12 @@ steps:
     environment:
       REPO_REMOTE: https://github.com/gamestart/jenkins-test.git
       GITHUB_TOKEN:
-        from_secret: 28ad87ab34eb392825d5bd7df9ffa422dea74cdc 
+        from_secret: GITHUB_TOKEN
     commands:
       - echo "https://$(echo $GITHUB_TOKEN)@github.com" > /root/.git-credentials
       - git config --global credential.helper store
+      - git config --global user.email xiaoxuan.tan@smartmore.com
+      - git config --global user.name gamestart
       - git submodule update --init --recursive --depth=1
     when:
       event:
