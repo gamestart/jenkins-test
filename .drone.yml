@@ -42,7 +42,12 @@ name: linux
 steps:
   - name: submodules
     image: alpine/git
+    environment:
+      REPO_REMOTE: https://github.com/gamestart/jenkins-test.git
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
     commands:
+      - echo "https://$(echo $GITHUB_TOKEN)@github.com" > /root/.git-credentials
       - git config --global credential.helper store
       - git submodule update --init --recursive --depth=1
     when:
