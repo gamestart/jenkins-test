@@ -59,7 +59,8 @@ steps:
     image: plugins/docker
     settings:
       registry: 192.168.100.12:5000
-      repo: 192.168.100.12:5000/test/test
+      registry: 192.168.100.21:5000
+      repo: 192.168.100.21:5000/test/test
       dockerfile: ./Dockerfile
       insecure: true
     when:
@@ -76,4 +77,4 @@ trigger:
     - main
 
 image_pull_secrets:
-  - dockersecret
+  - dockerconfigjson 
