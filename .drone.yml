@@ -48,7 +48,7 @@ steps:
         from_secret: 28ad87ab34eb392825d5bd7df9ffa422dea74cdc
     commands:
       - echo "https://$(echo $GITHUB_TOKEN)@github.com" > /root/.git-credentials
-      - git config --global url."https://gamestart:28ad87ab34eb392825d5bd7df9ffa422dea74cdc@github.com".insteadOf "https://github.com"
+      - git config --global url."https://gamestart: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@github.com".insteadOf "https://github.com"
       - git config --global credential.helper store
       - git submodule update --init --recursive --depth=1
     when:
