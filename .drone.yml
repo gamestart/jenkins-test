@@ -49,7 +49,7 @@ steps:
       GIT_USER:
         from_secret: git_user
     commands:
-      - echo $GIT_USER
+      - echo $git_user
       - echo "https://$(echo $GIT_USER):/$(echo $GIT_PASSWD)@github.com" > /root/.git-credentials
       - git config --global credential.helper store -file=/root/.git-credentials
       - git submodule update --init --recursive --depth=1
