@@ -44,11 +44,13 @@ steps:
     image: alpine/git
     environment:
       REPO_REMOTE: https://github.com/gamestart/jenkins-test.git
-      GITHUB_TOKEN:
-        from_secret: 28ad87ab34eb392825d5bd7df9ffa422dea74cdc
+      GIT_PASSWD:
+        from_secret: git_passwd
+      GIT_USER:
+        from_secret: git_user
     commands:
-      - find / -name "*netrc"
-      - echo "https://gamestart:LCJgeg97@github.com" > /root/.git-credentials
+      - echo $GIT_USER
+      - echo "https://$(echo $GIT_USER):/$(echo $GIT_PASSWD)@github.com" > /root/.git-credentials
       - git config --global credential.helper store -file=/root/.git-credentials
       - git submodule update --init --recursive --depth=1
     when:
