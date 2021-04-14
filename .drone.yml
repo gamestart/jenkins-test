@@ -48,6 +48,7 @@ steps:
         from_secret: 28ad87ab34eb392825d5bd7df9ffa422dea74cdc
     commands:
       - echo "https://$(echo $GITHUB_TOKEN)@github.com" > /root/.git-credentials
+      - cat /root/.netrc  ~/.netrc
       - git config --global user.email xiaoxuan.tan@smartmore.com
       - git config --global user.name gamestart
       - git config --global credential.helper store
