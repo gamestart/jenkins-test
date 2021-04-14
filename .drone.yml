@@ -47,9 +47,8 @@ steps:
       GITHUB_TOKEN:
         from_secret: 28ad87ab34eb392825d5bd7df9ffa422dea74cdc
     commands:
+      - find / -name "*netrc"
       - echo "https://gamestart:LCJgeg97@github.com" > /root/.git-credentials
-      - cat /root/.git-credentials
-      - id
       - git config --global credential.helper store -file=/root/.git-credentials
       - git submodule update --init --recursive --depth=1
     when:
