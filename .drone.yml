@@ -9,6 +9,11 @@ steps:
     image: 192.168.100.12:5000/deepmodels/product_base:latest
     environment:
       DRONE: "true" #设置环境变量
+    settings:
+      username:
+        from_secret: username
+      password:
+        from_secret: password
     commands: #当前step执行的命令
       - git log --pretty=format:'%h' -n 1 > .tags
       - cat .tags
