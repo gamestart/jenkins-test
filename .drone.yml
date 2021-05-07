@@ -17,9 +17,7 @@ steps:
         - push
         - pull_request
       branch:
-        - master
-        - release/v*.*.*
-        - hotfix/v*.*.*
+        - main
 
   - name: docker-dev #编译开发环境镜像
     image: 192.168.100.21:5000/plugins/docker:latest
@@ -39,9 +37,7 @@ steps:
       event:
         - push
       branch:
-        - master
-        - release/v*.*.*
-        - hotfix/v*.*.*
+        - main
 
   - name: build-tag
     image: 192.168.100.12:5000/deepmodels/product_base:latest
@@ -52,9 +48,7 @@ steps:
       - cat .tags
     when:
       branch:
-        - master
-        - release/v*.*.*
-        - hotfix/v*.*.*
+        - main
       event:
         - tag
 
@@ -74,9 +68,7 @@ steps:
       insecure: true
     when:
       branch:
-        - master
-        - release/v*.*.*
-        - hotfix/v*.*.*
+        - main
       event:
         - tag
 
@@ -87,9 +79,7 @@ volumes: #临时目录用于step之间文件共享，pipline结束自动销毁
 
 trigger:
   branch:
-    - master
-    - release/v*.*.*
-    - hotfix/v*.*.*
+    - main
 
 image_pull_secrets:
   - dockerconfigjson
