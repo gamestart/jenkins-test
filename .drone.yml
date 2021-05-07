@@ -11,10 +11,6 @@ steps:
       - name: cache
         path: /cache
     settings:
-      username:
-        from_secret: username
-      password:
-        from_secret: password
       registry: 192.168.100.21:5000 #镜像仓库
       repo: 192.168.100.21:5000/deepmodels/segmentation #镜像名根据开发环境做区分或者后面版本号区分后面就不需要单独部署了
       dockerfile: Dockerfile.drone #编译镜像的Dockerfile
