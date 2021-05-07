@@ -10,8 +10,6 @@ steps:
     volumes: #在volume中创建临时文件夹
       - name: cache
         path: /cache
-      - name: socket
-        path: /var/run/docker.sock
     settings:
       registry: 192.168.100.21:5000 #镜像仓库
       repo: 192.168.100.21:5000/deepmodels/segmentation #镜像名根据开发环境做区分或者后面版本号区分后面就不需要单独部署了
@@ -60,9 +58,6 @@ steps:
 volumes: #临时目录用于step之间文件共享，pipline结束自动销毁
   - name: cache
     temp: {}
-  - name: socket 
-    host:
-      path: /var/run/docker.sock
 
 trigger:
   branch:
