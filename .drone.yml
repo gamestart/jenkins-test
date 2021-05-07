@@ -5,25 +5,6 @@ workspace:
   path: /go/src/github.com/smartmore/SMore-Seg #设置工作目录，后续每个step都会在此目录下执行
 
 steps:
-  - name: build-dev #开发环境编译与单元测试
-    image: 192.168.100.12:5000/deepmodels/product_base:latest
-    environment:
-      DRONE: "true" #设置环境变量
-    settings:
-      username:
-        from_secret: username
-      password:
-        from_secret: password
-    commands: #当前step执行的命令
-      - git log --pretty=format:'%h' -n 1 > .tags
-      - cat .tags
-    when:
-      event:
-        - push
-        - pull_request
-      branch:
-        - main
-
   - name: docker-dev #编译开发环境镜像
     image: 192.168.100.21:5000/plugins/docker:latest
     volumes: #在volume中创建临时文件夹
