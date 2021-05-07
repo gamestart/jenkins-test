@@ -6,7 +6,7 @@ workspace:
 
 steps:
   - name: docker-dev #编译开发环境镜像
-    image: 192.168.100.21:5000/plugins/docker:latest
+    image: plugins/docker:sm
     volumes: #在volume中创建临时文件夹
       - name: cache
         path: /cache
