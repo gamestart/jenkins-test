@@ -40,10 +40,6 @@ steps:
       - name: cache
         path: /cache
     settings:
-      username:
-        from_secret: username
-      password:
-        from_secret: password
       registry: 192.168.100.21:5000 #镜像仓库
       repo: 192.168.100.21:5000/deepmodels/segmentation #镜像名
       dockerfile: Dockerfile.drone #编译镜像的Dockerfile
@@ -62,6 +58,3 @@ volumes: #临时目录用于step之间文件共享，pipline结束自动销毁
 trigger:
   branch:
     - main
-
-image_pull_secrets:
-  - dockerconfigjson
