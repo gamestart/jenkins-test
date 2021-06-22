@@ -1,8 +1,7 @@
 kind: pipeline
 type: docker
-platform:
-  os: linux
-  arch: arm
+
+
 steps:
   - name: greeting
     image: alpine
