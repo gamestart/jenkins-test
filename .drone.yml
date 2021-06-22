@@ -4,7 +4,7 @@ type: docker
 
 steps:
   - name: greeting
-    image: alpine
+    image: 192.168.100.12:5000/alpine/docker:latest
     commands:
       - echo hello
       - echo world
