@@ -6,10 +6,10 @@ pipeline {
 		GREETING="Hello";
     }
     stages{
-	agent {
-            label 'win10'
-        }
         stage('打招呼') {
+          agent {
+            label 'win10'
+          }
             steps{
             	powershell '''
 		    Write-Output "$GREETING $TITLE"
