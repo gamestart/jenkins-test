@@ -1,14 +1,19 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    agent any;
+    agent none;
     environment { //环境变量
 		GREETING="Hello";
     }
     stages{
+	agent {
+            label 'win10'
+        }
         stage('打招呼') {
             steps{
-            	sh 'echo "$GREETING $TITLE"'
+            	powershell '''
+		    Write-Output "$GREETING $TITLE"
+		'''
             }
         }
    }
