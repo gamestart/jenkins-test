@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'windows'
+      label 'win10'
     }
 
   }
