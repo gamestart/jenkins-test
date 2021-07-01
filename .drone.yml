@@ -8,7 +8,6 @@ steps:
     commands:
     - echo this should pass
   
-  
   - name: test2
     image: 192.168.100.12:5000/alpine/docker:latest
     resources:
